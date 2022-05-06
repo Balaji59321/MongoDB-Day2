@@ -102,7 +102,6 @@ db.topics.aggregate([
                     dateString: "$date",
                     format: "%m/%d/%Y"
                 } }}, 10] }, then: '$TaskId.task',else: "$$REMOVE"}}
-        
         }
     }
 ])
