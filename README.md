@@ -112,8 +112,29 @@ db.company_drives.find({$and : [{date: {$gt : "10/15/2020"}},{date: {$lt : "10/3
 <img width="788" alt="Screen Shot 2022-05-06 at 10 10 02 PM" src="https://user-images.githubusercontent.com/26063120/167175910-a25c3a5a-2bd6-412c-88f7-831b2da63beb.png">      
 
 Find all the company drives and students who are appeared for the placement.    
-db.users.find({$and :[{class1 : {$in : [false]}},{$or : [{date : {$lt : "10/15/2020"}},{date : {$gt : "10/31/2020"}}]}]})     
-<img width="996" alt="Screen Shot 2022-05-06 at 10 10 11 PM" src="https://user-images.githubusercontent.com/26063120/167175882-7e8d80a5-9c15-461a-bfa7-66ff853a7073.png">    
+db.users.aggregate([
+    {
+      $match : {
+          drive_id : {$gt : 0}
+      }  
+    },
+    {
+    $lookup : {
+        from : "company_drives",
+        localField: "drive_id",
+        foreignField: "id",
+        as: "CompanyDetails"
+    }
+    },
+    {
+    $project : {
+        "id":1,
+        "name": 1,
+        "result" : "$CompanyDetails.name"}
+        }
+])
+
+<img width="842" alt="Screen Shot 2022-05-06 at 10 34 46 PM" src="https://user-images.githubusercontent.com/26063120/167179225-bb4d161c-c15d-439c-bf00-14200c251dde.png">     
 
 Find the number of problems solved by the user in codekata     
 db.users.aggregate([{
