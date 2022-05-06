@@ -105,12 +105,15 @@ db.topics.aggregate([
         }
     }
 ])
+<img width="922" alt="Screen Shot 2022-05-06 at 10 09 48 PM" src="https://user-images.githubusercontent.com/26063120/167175957-de2d8fe9-db01-4fb7-840d-357db3c160ee.png">      
 
 Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020      
-db.company_drives.find({$and : [{date: {$gt : "10/15/2020"}},{date: {$lt : "10/31/2020"}}]})
+db.company_drives.find({$and : [{date: {$gt : "10/15/2020"}},{date: {$lt : "10/31/2020"}}]})      
+<img width="788" alt="Screen Shot 2022-05-06 at 10 10 02 PM" src="https://user-images.githubusercontent.com/26063120/167175910-a25c3a5a-2bd6-412c-88f7-831b2da63beb.png">      
 
 Find all the company drives and students who are appeared for the placement.    
-db.users.find({$and :[{class1 : {$in : [false]}},{$or : [{date : {$lt : "10/15/2020"}},{date : {$gt : "10/31/2020"}}]}]})
+db.users.find({$and :[{class1 : {$in : [false]}},{$or : [{date : {$lt : "10/15/2020"}},{date : {$gt : "10/31/2020"}}]}]})     
+<img width="996" alt="Screen Shot 2022-05-06 at 10 10 11 PM" src="https://user-images.githubusercontent.com/26063120/167175882-7e8d80a5-9c15-461a-bfa7-66ff853a7073.png">    
 
 Find the number of problems solved by the user in codekata     
 db.users.aggregate([{
@@ -126,7 +129,8 @@ db.users.aggregate([{
         "_id": 0,
         "name":1
     }},
-])
+])      
+<img width="774" alt="Screen Shot 2022-05-06 at 10 10 32 PM" src="https://user-images.githubusercontent.com/26063120/167175845-cd33423c-e962-4893-824d-5f51134faa2f.png">     
 
 Find all the mentors with who has the mentee's count more than 15       
 db.users.aggregate([
@@ -153,8 +157,11 @@ db.users.aggregate([
     },{
         $match:{ "count" : {$lt : 15}}
         }
-])
+])      
+<img width="852" alt="Screen Shot 2022-05-06 at 10 10 41 PM" src="https://user-images.githubusercontent.com/26063120/167175811-3ab6ea56-3167-4e9c-89b1-b845a7ed4c97.png">    
+
 
 Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020      
-db.users.find({$and :[{class1 : {$in : [false,null]}},{$and : [{date : {$not :{$gte : "11/15/2020"}}},{date :{$lte : "11/31/2020"}}]}]})
+db.users.find({$and :[{class1 : {$in : [false,null]}},{$and : [{date : {$not :{$gte : "11/15/2020"}}},{date :{$lte : "11/31/2020"}}]}]})     
+<img width="1054" alt="Screen Shot 2022-05-06 at 10 10 49 PM" src="https://user-images.githubusercontent.com/26063120/167175766-8c3d414e-2310-4a13-83d7-039136374ff8.png">    
 
