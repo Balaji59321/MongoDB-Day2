@@ -162,6 +162,6 @@ db.users.aggregate([
 
 
 Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020      
-db.users.find({$and :[{class1 : {$in : [false,null]}},{$and : [{date : {$not :{$gte : "11/15/2020"}}},{date :{$lte : "11/31/2020"}}]}]})     
-<img width="1054" alt="Screen Shot 2022-05-06 at 10 10 49 PM" src="https://user-images.githubusercontent.com/26063120/167175766-8c3d414e-2310-4a13-83d7-039136374ff8.png">    
+db.users.find({$and :[{class1 : {$in : [false]}},{$or : [{date : {$lt : "10/15/2020"}},{date : {$gt : "10/31/2020"}}]}]})     
+<img width="996" alt="Screen Shot 2022-05-06 at 10 10 11 PM" src="https://user-images.githubusercontent.com/26063120/167175882-7e8d80a5-9c15-461a-bfa7-66ff853a7073.png"> 
 
